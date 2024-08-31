@@ -7,9 +7,11 @@ import { UserComponent } from './components/user/user.component';
 import { OrderComponent } from './components/order/order.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
-import { TransactionComponent } from './components/transaction/transaction.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CommonModule } from '@angular/common';
+import { MenuItemService } from './services/menu-item.service';
+import { UserService } from './services/user.service';
+import { OrderService } from './services/order.service';
+import { InventoryService } from './services/inventory.service';
 
 @NgModule({
   declarations: [
@@ -18,16 +20,14 @@ import { CommonModule } from '@angular/common';
     OrderComponent,
     MenuItemComponent,
     InventoryComponent,
-    TransactionComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    CommonModule,
-    AppRoutingModule // Use AppRoutingModule for routing
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [MenuItemService, UserService, OrderService, InventoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
