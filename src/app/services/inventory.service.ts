@@ -24,6 +24,7 @@ export class InventoryService {
   }
 
   updateInventory(id: number, inventory: Inventory): Observable<void> {
+    inventory.inventoryID = id
     return this.http.put<void>(`${this.apiUrl}/${id}`, inventory);
   }
 

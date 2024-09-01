@@ -3,7 +3,7 @@ import { InventoryService } from '../../services/inventory.service';
 import { Inventory } from '../../models/inventory';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 @Component({
   standalone: true,
   imports: [CommonModule, HttpClientModule],
@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class InventoryComponent implements OnInit {
   inventories: Inventory[] = [];
 
-  constructor(private inventoryService: InventoryService) {}
+  constructor(private inventoryService: InventoryService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadInventories();
@@ -27,11 +27,11 @@ export class InventoryComponent implements OnInit {
   }
 
   addInventory(): void {
-    // Implement logic to add an inventory item
+    this.router.navigate(['/inventory/add']);
   }
 
   editInventory(inventory: Inventory): void {
-    // Implement logic to edit an inventory item
+    this.router.navigate(['/inventory/edit', inventory.inventoryID]);
   }
 
   deleteInventory(id: number): void {

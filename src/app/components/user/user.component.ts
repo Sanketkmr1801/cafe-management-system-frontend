@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
-import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [HttpClientModule, CommonModule],
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
@@ -14,29 +15,44 @@ import { HttpClientModule } from '@angular/common/http';
 export class UserComponent implements OnInit {
   users: User[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadUsers();
   }
 
+  // Load all users from the server
   loadUsers(): void {
-    this.userService.getUsers().subscribe((data: User[]) => {
-      this.users = data;
-    });
+    this.userService.getUsers().subscribe(
+      (data: User[]) => {
+        this.users = data;
+      },
+      error => {
+        console.error('Error loading users', error);
+      }
+    );
   }
 
+  // Navigate to user add/edit form
   addUser(): void {
-    // Implement logic to add a user
+    this.router.navigate(['/user/add']); // Adjust the route as needed
   }
 
+  // Navigate to user edit form
   editUser(user: User): void {
-    // Implement logic to edit a user
+    this.router.navigate([`/user/edit/${user.userID}`]); // Adjust the route as needed
   }
 
   deleteUser(id: number): void {
     if (confirm('Are you sure you want to delete this user?')) {
-      this.userService.deleteUser(id).subscribe(() => this.loadUsers());
+      this.userService.deleteUser(id).subscribe(
+        () => {
+          this.users = this.users.filter(user => user.userID !== id);
+        },
+        error => {
+          console.error('Error deleting user', error);
+        }
+      );
     }
   }
 }

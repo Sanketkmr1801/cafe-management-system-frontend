@@ -24,6 +24,7 @@ export class MenuItemService {
   }
 
   updateMenuItem(id: number, menuItem: MenuItem): Observable<void> {
+    menuItem.menuItemID = id
     return this.http.put<void>(`${this.apiUrl}/${id}`, menuItem);
   }
 

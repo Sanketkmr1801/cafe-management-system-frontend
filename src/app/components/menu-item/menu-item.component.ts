@@ -3,6 +3,7 @@ import { MenuItemService } from '../../services/menu-item.service';
 import { MenuItem } from '../../models/menu-item';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -14,7 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 export class MenuItemComponent implements OnInit {
   menuItems: MenuItem[] = [];
 
-  constructor(private menuItemService: MenuItemService) {}
+  constructor(
+    private menuItemService: MenuItemService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadMenuItems();
@@ -27,11 +31,11 @@ export class MenuItemComponent implements OnInit {
   }
 
   addMenuItem(): void {
-    // Implement logic to add a menu item
+    this.router.navigate(['/menu-item/add']);
   }
 
   editMenuItem(menuItem: MenuItem): void {
-    // Implement logic to edit a menu item
+    this.router.navigate(['/menu-item/edit', menuItem.menuItemID]);
   }
 
   deleteMenuItem(id: number): void {

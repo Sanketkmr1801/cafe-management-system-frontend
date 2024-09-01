@@ -1,0 +1,10 @@
+<form [formGroup]="menuItemForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name">
+    
+    <label for="price">Price:</label>
+    <input id="price" formControlName="price" type="number">
+    
+    <button type="submit">Add Menu Item</button>
+  </form>
+  

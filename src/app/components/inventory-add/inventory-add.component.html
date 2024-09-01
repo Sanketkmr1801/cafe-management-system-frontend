@@ -1,0 +1,13 @@
+<form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input id="name" formControlName="itemName" required>
+  
+    <label for="quantity">Quantity:</label>
+    <input id="quantity" formControlName="quantity" type="number" required>
+  
+    <label for="price">Price:</label>
+    <input id="price" formControlName="unitPrice" type="number" required>
+  
+    <button type="submit">Add Inventory</button>
+  </form>
+  

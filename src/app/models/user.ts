@@ -6,5 +6,4 @@ export class User {
   email!: string;
   passwordHash!: string;
   lastOrderPrice!: number | null;
-  orders?: Order[];
 }
