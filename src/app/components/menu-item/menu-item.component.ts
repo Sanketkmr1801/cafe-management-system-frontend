@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItemService } from '../../services/menu-item.service';
 import { MenuItem } from '../../models/menu-item';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, HttpClientModule],
   selector: 'app-menu-item',
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.css']
