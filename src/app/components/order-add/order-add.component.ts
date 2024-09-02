@@ -8,7 +8,7 @@ import { OrderItem } from '../../models/order-item';
 import { MenuItem } from '../../models/menu-item';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-
+import { AuthService } from '../../services/auth-service.service';
 @Component({
   standalone: true,
   imports: [HttpClientModule, CommonModule, ReactiveFormsModule],
@@ -25,7 +25,8 @@ export class OrderAddComponent implements OnInit {
     private fb: FormBuilder,
     private orderService: OrderService,
     private menuItemService: MenuItemService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
   ) {
     this.orderForm = this.fb.group({
       userID: [null, Validators.required]
@@ -36,6 +37,7 @@ export class OrderAddComponent implements OnInit {
     this.menuItemService.getMenuItems().subscribe(data => {
       this.menuItems = data;
     });
+    this.setUserId();
   }
 
   onAddItem(menuItemID: number, event: Event, price: number): void {
@@ -75,6 +77,10 @@ export class OrderAddComponent implements OnInit {
     this.orderService.addOrder(order).subscribe(() => {
         this.router.navigate(['/orders']);
     });
-}
-
+    
+  }
+  private setUserId() {
+    const userId = this.authService.getUserId();
+    this.orderForm.patchValue({ userID: userId });
+  }
 }

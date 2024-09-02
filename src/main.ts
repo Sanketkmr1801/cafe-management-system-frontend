@@ -15,7 +15,10 @@ import { MenuItemEditComponent } from './app/components/menu-item-edit/menu-item
 import { InventoryAddComponent } from './app/components/inventory-add/inventory-add.component';
 import { InventoryEditComponent } from './app/components/inventory-edit/inventory-edit.component';
 import { OrderAddComponent } from './app/components/order-add/order-add.component';
-
+import { LoginComponent } from './app/components/login/login.component';
+import { RegisterComponent } from './app/components/register/register.component';
+import { ProtectedComponent } from './app/components/protected/protected.component';
+import { AuthGuard } from './app/auth.guard';
 const routes: Routes = [
   { path: 'users', component: UserComponent },
   { path: 'user/add', component: UserAddComponent },
@@ -28,9 +31,11 @@ const routes: Routes = [
   { path: 'inventory', component: InventoryComponent },
   { path: 'inventory/add', component: InventoryAddComponent },
   { path: 'inventory/edit/:id', component: InventoryEditComponent },
-
-  { path: '', redirectTo: '/users', pathMatch: 'full' },
-  { path: '**', redirectTo: '/users' }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' }
 ];
 
 bootstrapApplication(AppComponent, {

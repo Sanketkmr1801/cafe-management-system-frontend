@@ -16,3 +16,20 @@ nav ul {
   nav ul li a.active {
     font-weight: bold;
   }
+
+.navbar-nav.ml-auto {
+  margin-left: auto;
+}
+
+.navbar-nav .nav-item {
+  margin-left: 10px; /* Space between nav items */
+}
+
+.navbar-nav .btn-outline-danger {
+  margin-left: 10px; /* Space between Place Order and Logout */
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+}

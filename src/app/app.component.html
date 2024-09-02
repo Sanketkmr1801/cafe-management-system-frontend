@@ -1,10 +1,40 @@
-<nav>
-  <a routerLink="/users" routerLinkActive="active">Users</a>
-  <a routerLink="/orders" routerLinkActive="active">Orders</a>
-  <a routerLink="/menu-items" routerLinkActive="active">Menu Items</a>
-  <a routerLink="/inventory" routerLinkActive="active">Inventory</a>
-  <br>
-  <a routerLink="/order/add" routerLinkActive="active">Place Order</a>
-  <!-- <a routerLink="/transactions" routerLinkActive="active">Transactions</a> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">Cafe Management</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/orders" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/menu-items" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Menu Items</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/inventory" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inventory</a>
+      </li>
+      <!-- Place Order button -->
+      <li class="nav-item ml-auto">
+        <a class="nav-link btn-custom" routerLink="/order/add" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Place Order</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <ng-container *ngIf="isLoggedIn">
+        <!-- Logout button -->
+        <li class="nav-item">
+          <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
 </nav>
 <router-outlet></router-outlet>
