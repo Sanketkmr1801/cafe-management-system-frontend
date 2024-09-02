@@ -33,3 +33,21 @@ nav ul {
   display: flex;
   align-items: center;
 }
+
+/* Add padding to the main title */
+.navbar-brand {
+  padding-left: 1.5rem; /* Adjust as needed */
+  padding-right: 1.5rem; /* Adjust as needed */
+}
+
+/* Remove green background from Place Order button */
+.btn-custom {
+  background-color: transparent; /* Remove any background color */
+  border: none; /* Remove border if present */
+}
+
+/* Add a hover effect for the Place Order button */
+.btn-custom:hover {
+  background-color: #f8f9fa; /* Light background on hover */
+  color: #007bff; /* Change text color on hover */
+}

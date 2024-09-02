@@ -1,13 +1,21 @@
-<form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
-    <label for="name">Name:</label>
-    <input id="name" formControlName="itemName" required>
+<!-- inventory-add.component.html -->
+<div class="container mt-4">
+  <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Item Name:</label>
+      <input id="name" formControlName="itemName" class="form-control" placeholder="Enter item name" required>
+    </div>
   
-    <label for="quantity">Quantity:</label>
-    <input id="quantity" formControlName="quantity" type="number" required>
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input id="quantity" formControlName="quantity" type="number" class="form-control" placeholder="Enter quantity" required>
+    </div>
   
-    <label for="price">Price:</label>
-    <input id="price" formControlName="unitPrice" type="number" required>
+    <div class="form-group">
+      <label for="price">Unit Price:</label>
+      <input id="price" formControlName="unitPrice" type="number" class="form-control" placeholder="Enter unit price" required>
+    </div>
   
-    <button type="submit">Add Inventory</button>
+    <button type="submit" class="btn btn-primary mt-3">Add Inventory</button>
   </form>
-  
+</div>
