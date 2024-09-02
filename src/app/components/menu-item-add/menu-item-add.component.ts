@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MenuItemService } from '../../services/menu-item.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -13,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class MenuItemAddComponent {
   menuItemForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private menuItemService: MenuItemService) {
+  constructor(private fb: FormBuilder, private menuItemService: MenuItemService, private router: Router) {
     this.menuItemForm = this.fb.group({
       name: [''],
       price: [0],
@@ -22,7 +23,7 @@ export class MenuItemAddComponent {
 
   onSubmit(): void {
     this.menuItemService.addMenuItem(this.menuItemForm.value).subscribe(() => {
-      // Handle success, e.g., navigate to another page or show a success message
+      this.router.navigate(["/menu-items"])
     });
   }
 }

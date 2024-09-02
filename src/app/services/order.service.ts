@@ -20,6 +20,7 @@ export class OrderService {
   }
 
   addOrder(order: Order): Observable<Order> {
+    console.log(order)
     return this.http.post<Order>(this.apiUrl, order);
   }
 

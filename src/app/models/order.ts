@@ -1,4 +1,3 @@
-import { User } from './user';
 import { OrderItem } from './order-item';
 
 export class Order {
@@ -6,6 +5,5 @@ export class Order {
   orderDate!: Date;
   totalAmount!: number;
   userID!: number | null;
-  user?: User;
   orderItems?: OrderItem[];
 }

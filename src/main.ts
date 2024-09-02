@@ -14,12 +14,14 @@ import { MenuItemAddComponent } from './app/components/menu-item-add/menu-item-a
 import { MenuItemEditComponent } from './app/components/menu-item-edit/menu-item-edit.component';
 import { InventoryAddComponent } from './app/components/inventory-add/inventory-add.component';
 import { InventoryEditComponent } from './app/components/inventory-edit/inventory-edit.component';
+import { OrderAddComponent } from './app/components/order-add/order-add.component';
 
 const routes: Routes = [
   { path: 'users', component: UserComponent },
   { path: 'user/add', component: UserAddComponent },
   { path: 'user/edit/:id', component: UserEditComponent },
   { path: 'orders', component: OrderComponent },
+  { path: 'order/add', component: OrderAddComponent },
   { path: 'menu-items', component: MenuItemComponent },
   { path: 'menu-item/add', component: MenuItemAddComponent },
   { path: 'menu-item/edit/:id', component: MenuItemEditComponent },

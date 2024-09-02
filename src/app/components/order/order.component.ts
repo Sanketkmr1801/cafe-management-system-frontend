@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class OrderComponent implements OnInit {
   orders: Order[] = [];
+  selectedOrder?: Order;
+  isModalOpen = false;
 
   constructor(private orderService: OrderService) {}
 
@@ -24,6 +26,16 @@ export class OrderComponent implements OnInit {
     this.orderService.getOrders().subscribe((data: Order[]) => {
       this.orders = data;
     });
+  }
+
+  showDetails(order: Order): void {
+    this.selectedOrder = order;
+    this.isModalOpen = true;
+  }
+
+  closeDetails(): void {
+    this.isModalOpen = false;
+    this.selectedOrder = undefined;
   }
 
   editOrder(order: Order): void {
